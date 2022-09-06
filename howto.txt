@@ -1,0 +1,15 @@
+
+
+
+
+
+---------------------
+python.exe tserver.py 
+---------------------
+ffmpeg -i x.mp4 -force_key_frames "expr:gte(t,n_forced*1)" -strict -2 -c:a aac -c:v libx264 -hls_time 1 -f hls -hls_playlist_type vod x.m3u8
+
+
+-hls_playlist_type vod 指明点播，不然默认直播，会只有最后几个片。
+
+每秒一个关键字:
+expr:gte(t,n_forced*1)
